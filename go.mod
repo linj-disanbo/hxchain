@@ -1,4 +1,4 @@
-module github.com/bityuan/bityuan
+module github.com/linj-disanbo/hxchain
 
 go 1.19
 

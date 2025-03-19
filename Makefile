@@ -1,3 +1,5 @@
+export repo=github.com/linj-disanbo/hxchain
+export chain_name=hxchain
 
 export GO111MODULE=on
 export CHAIN33_PATH=$(shell go list -f {{.Dir}} github.com/33cn/chain33)
@@ -8,9 +10,9 @@ LDFLAGS := ' -w -s'
 BUILDTIME:=$(shell date +"%Y-%m-%d %H:%M:%S %A")
 VERSION=$(shell git describe --tags || git rev-parse --short=8 HEAD)
 GitCommit=$(shell git rev-parse --short=8 HEAD)
-BUILD_FLAGS := -ldflags '-X "github.com/bityuan/bityuan/version.GitCommit=$(GitCommit)" \
+BUILD_FLAGS := -ldflags '-X "$(repo)/version.GitCommit=$(GitCommit)" \
                          -X "github.com/33cn/chain33/common/version.GitCommit=$(GitCommit)" \
-                         -X "github.com/bityuan/bityuan/version.BuildTime=$(BUILDTIME)"'
+                         -X "$(repo)/version.BuildTime=$(BUILDTIME)"'
 
 .PHONY: default build
 
@@ -19,8 +21,8 @@ default: build
 all:  build
 
 build: toolimport
-	CGO_ENABLED=1 go build ${BUILD_FLAGS} -v  -o bityuan
-	CGO_ENABLED=1 go build ${BUILD_FLAGS} -v  -o bityuan-cli github.com/bityuan/bityuan/cli
+	CGO_ENABLED=1 go build ${BUILD_FLAGS} -v  -o $(chain_name)
+	CGO_ENABLED=1 go build ${BUILD_FLAGS} -v  -o $(chain_name)-cli $(repo)/cli
 
 
 PLATFORM_LIST = \
@@ -30,35 +32,35 @@ PLATFORM_LIST = \
 WINDOWS_ARCH_LIST = \
 	windows-amd64
 
-GOBUILD=CGO_ENABLED=1 go build $(BUILD_FLAGS)' -X "github.com/bityuan/bityuan/version.Version=$(VERSION)"  -w -s'
+GOBUILD=CGO_ENABLED=1 go build $(BUILD_FLAGS)' -X "$(repo)/version.Version=$(VERSION)"  -w -s'
 SRC_CLI := ./cli
 SRC := ./
-APP := bityuan
-CLI := bityuan-cli
+APP := $(chain_name)
+CLI := $(chain_name)-cli
 
 linux-action-amd64:
 	GOARCH=amd64 GOOS=linux $(GOBUILD) -o $(APP)-linux-amd64 $(SRC)
 	GOARCH=amd64 GOOS=linux $(GOBUILD) -o $(CLI)-linux-amd64 $(SRC_CLI)
 	chmod +x $(APP)-linux-amd64 $(CLI)-linux-amd64
-	tar -zcvf build/$(APP)-linux-amd64.tar.gz $(APP)-linux-amd64  $(CLI)-linux-amd64 CHANGELOG.md bityuan-fullnode.toml bityuan.toml
+	tar -zcvf build/$(APP)-linux-amd64.tar.gz $(APP)-linux-amd64  $(CLI)-linux-amd64 CHANGELOG.md $(APP)-fullnode.toml $(APP).toml
 
 _GOBUILD := CGO_ENABLED=1 go build $(BUILD_FLAGS)' -w -s'
 linux-amd64:
 	GOARCH=amd64 GOOS=linux $(_GOBUILD) -o $(APP)-$@ $(SRC)
 	GOARCH=amd64 GOOS=linux $(_GOBUILD) -o $(CLI)-$@ $(SRC_CLI)
 	chmod +x $(APP)-$@ $(CLI)-$@
-	tar -zcvf build/$(APP)-$@.tar.gz $(APP)-$@  $(CLI)-$@ CHANGELOG.md bityuan-fullnode.toml bityuan.toml
+	tar -zcvf build/$(APP)-$@.tar.gz $(APP)-$@  $(CLI)-$@ CHANGELOG.md $(APP)-fullnode.toml $(APP).toml
 
 darwin-amd64:
 	GOARCH=amd64 GOOS=darwin $(_GOBUILD) -o $(APP)-$@ $(SRC)
 	GOARCH=amd64 GOOS=darwin $(_GOBUILD) -o $(CLI)-$@ $(SRC_CLI)
 	chmod +x $(APP)-$@ $(CLI)-$@
-	tar -zcvf build/$(APP)-$@.tar.gz $(APP)-$@  $(CLI)-$@ CHANGELOG.md bityuan-fullnode.toml bityuan.toml
+	tar -zcvf build/$(APP)-$@.tar.gz $(APP)-$@  $(CLI)-$@ CHANGELOG.md $(APP)-fullnode.toml $(APP).toml
 
 windows-amd64:
 	GOARCH=amd64 GOOS=windows $(_GOBUILD) -o $(APP)-$@.exe $(SRC)
 	GOARCH=amd64 GOOS=windows $(_GOBUILD) -o $(CLI)-$@.exe $(SRC_CLI)
-	#zip -j build/$(APP)-$@.zip $(APP)-$@.exe  $(CLI)-$@.exe CHANGELOG.md bityuan-fullnode.toml bityuan.toml
+	#zip -j build/$(APP)-$@.zip $(APP)-$@.exe  $(CLI)-$@.exe CHANGELOG.md $(APP)-fullnode.toml $(APP).toml
 
 #make updateplugin version=xxx
 #单独更新plugin或chain33, version可以是tag或者commit哈希(tag必须是--vMajor.Minor.Patch--规范格式)
@@ -118,13 +120,13 @@ buildtool: ## chain33 tool
 	@go build  -o tool `go list -f {{.Dir}} github.com/33cn/chain33`/cmd/tools
 
 toolimport: buildtool ## update plugin import
-	@./tool import --path "plugin" --packname "github.com/bityuan/bityuan/plugin" --conf "plugin/plugin.toml"
+	@./tool import --path "plugin" --packname "$(repo)/plugin" --conf "plugin/plugin.toml"
 
 clean:
 	@rm -rf datadir
 	@rm -rf logs
 	@rm -rf wallet
 	@rm -rf grpc33.log
-	@rm -rf bityuan
-	@rm -rf bityuan-cli
+	@rm -rf $(APP)
+	@rm -rf $(APP)-cli
 	@rm -rf tool

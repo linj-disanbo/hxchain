@@ -6,8 +6,8 @@ import (
 	"runtime/debug"
 
 	_ "github.com/33cn/chain33/system"
-	_ "github.com/bityuan/bityuan/plugin"
-	"github.com/bityuan/bityuan/version"
+	_ "github.com/linj-disanbo/hxchain/plugin"
+	"github.com/linj-disanbo/hxchain/version"
 
 	frameVersion "github.com/33cn/chain33/common/version"
 	"github.com/33cn/chain33/util/cli"

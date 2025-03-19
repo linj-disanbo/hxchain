@@ -3,13 +3,14 @@ package main
 import (
 	"fmt"
 
-	"github.com/bityuan/bityuan/version"
+	"github.com/linj-disanbo/hxchain/version"
 )
 
+// TODO CoinSymbol
 var bityuan = fmt.Sprintf(`
 TestNet=false
 version="%s"
-CoinSymbol="bty"
+CoinSymbol="HX"
 
 [crypto]
 enableTypes=[]    #设置启用的加密插件名称，不配置启用所有
