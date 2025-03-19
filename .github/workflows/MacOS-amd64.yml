@@ -1,0 +1,25 @@
+name: build darwin-amd64
+on: [push,pull_request]
+
+jobs:
+  build_macos:
+    name: build_macos
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-go@v3
+        with:
+          go-version-file: 'go.mod'
+        id: go
+      - name: set go env
+        run: export PATH=${PATH}:`go env GOPATH`/bin
+
+      - name: deploy
+        run: make darwin-amd64
+
+      - name : Upload artifact bin
+        uses: actions/upload-artifact@v2
+        with:
+          name: bityuan-darwin-amd64.tar.gz
+          path: |
+            build/bityuan-darwin-amd64.tar.gz

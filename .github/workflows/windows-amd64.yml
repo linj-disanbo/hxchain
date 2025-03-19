@@ -1,0 +1,40 @@
+name: build windows-amd64
+on: [push,pull_request]
+
+jobs:
+  build_windows:
+    name: build_windows
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-go@v3
+        with:
+          go-version-file: 'go.mod'
+
+      - name: Set up MinGW
+        uses: egor-tensin/setup-mingw@v2
+        with:
+          platform: x64
+          version: '8.1.0'
+
+      - name: set go env
+        run: |
+          gcc --version
+          go version
+          go env GOPATH
+          go env
+      - name: deploy
+        run: make windows-amd64
+
+      - name: Archive Release
+        uses: vimtor/action-zip@v1
+        with:
+          files: CHANGELOG.md bityuan-fullnode.toml bityuan.toml bityuan-cli-windows-amd64.exe bityuan-windows-amd64.exe
+          dest: bityuan-windows-amd64.zip
+
+      - name : Upload artifact bin
+        uses: actions/upload-artifact@v2
+        with:
+          name: bityuan-windows-amd64.zip
+          path: |
+            bityuan-windows-amd64.zip
