@@ -26,16 +26,17 @@ callerFunction = false
 dbPath="datadir"
 dbCache=64
 batchsync=false
-isRecordBlockSequence=false
+isRecordBlockSequence=true
 enableTxQuickIndex=true
 # 升级storedb是否重新执行localdb，bityuan主链升级不需要开启，平行链升级需要开启
 enableReExecLocal=false
 # 使能精简localdb
-enableReduceLocaldb=true
+enableReduceLocaldb=false
 # 是否禁止分片功能，默认开启分片功能
 disableShard=false
 # 使能从P2pStore中获取数据
 enableFetchP2pstore=true
+singleMode=false
 
 [p2p]
 types=["dht"]
@@ -57,7 +58,7 @@ innerBounds=300
 #可以自定义设置连接节点
 seeds=[]
 port=13803
-maxConnectNum=40
+maxConnectNum=300
 # 是否配置为全节点模式，全节点保存所有分片数据，种子节点应配置为true
 isFullNode=false
 #允许连接的最低版本
@@ -78,6 +79,8 @@ grpcBindAddr="localhost:8802"
 whitelist=["127.0.0.1"]
 jrpcFuncWhitelist=["*"]
 grpcFuncWhitelist=["*"]
+#jrpcFuncBlacklist=["SendToAddress","Lock","UnLock","SetPasswd","NewAccount","GetAccounts","MergeBalance","ImportPrivKey","WalletTransactionList","DumpPrivkey","SaveSeed","GetSeed"]
+#grpcFuncBlacklist=["SendToAddress","Lock","UnLock","SetPasswd","NewAccount","GetAccounts","MergeBalance","ImportPrivKey","WalletTransactionList","DumpPrivkey","SaveSeed","GetSeed"]
 enableTLS=false
 certFile="cert.pem"
 keyFile="key.pem"

@@ -35,7 +35,7 @@ timeoutSeconds=5
 batchBlockNum=128
 driver="leveldb"
 isStrongConsistency=false
-singleMode=false
+#singleMode=false
 # 分片存储中每个大块包含的区块数，固定参数
 chunkblockNum=1000
 # blockchain模块保留的区块数，指定最新的reservedBlockNum个区块不参与分片

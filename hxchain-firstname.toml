@@ -36,6 +36,7 @@ enableReduceLocaldb=false
 disableShard=false
 # 使能从P2pStore中获取数据
 enableFetchP2pstore=true
+singleMode=true
 
 [p2p]
 types=["dht"]
