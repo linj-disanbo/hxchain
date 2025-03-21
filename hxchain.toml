@@ -141,7 +141,7 @@ saveTokenTxList=false
 #是否开启升级
 nonceUpGrade=false
 #升级路径
-upgradeUrl="cloud.bityuan.com:8802"
+upgradeUrl="" #
 debugEvmTxLog=false
 [metrics]
 #是否使能发送metrics数据的发送

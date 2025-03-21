@@ -10,21 +10,23 @@ import (
 var bityuan = fmt.Sprintf(`
 TestNet=false
 version="%s"
-CoinSymbol="HX"
+CoinSymbol="HXC"
+ChainID=12222
+CoinPrecision = 10000
 
 [crypto]
 enableTypes=[]    #设置启用的加密插件名称，不配置启用所有
 [crypto.enableHeight]  #配置已启用插件的启用高度，不配置采用默认高度0， 负数表示不启用
 bls=-1
-btcscript=19900000
+btcscript=0
 [crypto.sub.secp256k1eth] 
-evmChainID=2999
+evmChainID=12222
 
 [address]
 defaultDriver="btc"
 [address.enableHeight]
-eth=19900000
-btcMultiSign=2270000
+eth=0
+btcMultiSign=0
 
 [blockchain]
 defCacheSize=128
@@ -49,9 +51,10 @@ serverStart=true
 
 [p2p.sub.dht]
 #bootstraps是内置不能修改的引导节点
-bootstraps=["/ip4/13.115.235.168/tcp/13803/p2p/16Uiu2HAkzNiDx1mN6muuBRgPpDRaUG5NGs8HMHmp1HND968Y6Kho",
+#bootstraps=["/ip4/13.115.235.168/tcp/13803/p2p/16Uiu2HAkzNiDx1mN6muuBRgPpDRaUG5NGs8HMHmp1HND968Y6Kho",
 "/ip4/174.139.188.98/tcp/13803/p2p/16Uiu2HAm7nyy2yYhHW5VkhbXpTo8vqoZNsgzEH8hMNn98UWWfaK6",
 "/ip4/23.224.75.178/tcp/13803/p2p/16Uiu2HAmQ9E5dQR1kyQPj1JARsHjNFFVEYZAeQWePM9nysdjPPNC"]
+bootstraps=[] # TODO
 
 [p2p.sub.dht.broadcast]
 # 区块哈希广播最小大小 100KB
@@ -65,17 +68,17 @@ disableLtBlock=true
 [mempool]
 name="price"
 poolCacheSize=102400
-minTxFeeRate=100000
-maxTxFee=1000000000
+minTxFeeRate=10 
+maxTxFee=1000000 
 isLevelFee=true
 
 [mver.mempool.ForkMaxTxFeeV1]
 # 单笔交易最大的手续费,  50 coins
-maxTxFee=5000000000
+maxTxFee=5000000 
 
 [mempool.sub.score]
 poolCacheSize=102400
-minTxFee=100000
+minTxFee=10 
 maxTxNumPerAccount=100
 timeParam=1      #时间占价格比例
 priceConstant=1544  #手续费相对于时间的一个合适的常量,取当前unxi时间戳前四位数,排序时手续费高1e-5~=快1s
@@ -88,21 +91,23 @@ poolCacheSize=102400
 name="ticket"
 minerstart=true
 genesisBlockTime=1514533394
-genesis="14KEKbYtKKQm4wMthSK9J4La4nAiidGozt"
+genesis="1J4BakhLh1PdY3ojnmUP9HdciAPam2s7Bk" # address.csv-1
 minerExecs=["ticket", "autonomy"]
 enableBestBlockCmp=true
 
 [mver.consensus]
-fundKeyAddr = "1JmFaA6unrCFYEWPGRi7uuXY1KthTJxJEP"
+fundKeyAddr = "14BtJXCtfUPtnRzgPq8YVmF1EHrhZyajzT" # TODO
 powLimitBits = "0x1f00ffff"
 maxTxNumber = 1500
 
+# TODO
+# 1000e = 10w * 100w
 [mver.consensus.ticket]
-coinReward = 18
-coinDevFund = 12
-ticketPrice = 10000
+coinReward = 667
+coinDevFund = 333
+ticketPrice = 1000000
 retargetAdjustmentFactor = 4
-futureBlockTime = 15
+futureBlockTime = 5
 ticketFrozenTime = 43200
 ticketWithdrawTime = 172800
 ticketMinerWaitTime = 7200
@@ -110,67 +115,27 @@ targetTimespan = 2160
 targetTimePerBlock = 15
 
 [mver.consensus.ticket.ForkChainParamV2]
-coinReward = 5
-coinDevFund = 3
+coinReward = 667
+coinDevFund = 333
 targetTimespan = 720
 targetTimePerBlock = 5
-ticketPrice = 3000
+ticketPrice = 1000000
 
 [mver.consensus.ForkTicketFundAddrV1]
-fundKeyAddr = "1Ji3W12KGScCM7C2p8bg635sNkayDM8MGY"
+fundKeyAddr = "14BtJXCtfUPtnRzgPq8YVmF1EHrhZyajzT" # TODO
 
 [consensus.sub.ticket]
 genesisBlockTime=1526486816
 
-[[consensus.sub.ticket.genesis]]
-minerAddr="184wj4nsgVxKyz2NhM3Yb5RK5Ap6AFRFq2"
-returnAddr="1FB8L3DykVF7Y78bRfUrRcMZwesKue7CyR"
-count=3000
+[[consensus.sub.ticket.genesis]] # 可以重复更多个, 进行初始分配
+minerAddr="13ZKGRKU1UmFuU1YyLDDiFjr5A14vHnbjr" # address.csv-3
+returnAddr="18g5j6VbSgHrAMf5C5bhz4PE87pPJaK9e9" # address.csv-4
+count=50000
 
 [[consensus.sub.ticket.genesis]]
-minerAddr="1M4ns1eGHdHak3SNc2UTQB75vnXyJQd91s"
-returnAddr="1Lw6QLShKVbKM6QvMaCQwTh5Uhmy4644CG"
-count=3000
-
-[[consensus.sub.ticket.genesis]]
-minerAddr="19ozyoUGPAQ9spsFiz9CJfnUCFeszpaFuF"
-returnAddr="1PSYYfCbtSeT1vJTvSKmQvhz8y6VhtddWi"
-count=3000
-
-[[consensus.sub.ticket.genesis]]
-minerAddr="1MoEnCDhXZ6Qv5fNDGYoW6MVEBTBK62HP2"
-returnAddr="1BG9ZoKtgU5bhKLpcsrncZ6xdzFCgjrZud"
-count=3000
-
-[[consensus.sub.ticket.genesis]]
-minerAddr="1FjKcxY7vpmMH6iB5kxNYLvJkdkQXddfrp"
-returnAddr="1G7s64AgX1ySDcUdSW5vDa8jTYQMnZktCd"
-count=3000
-
-[[consensus.sub.ticket.genesis]]
-minerAddr="12T8QfKbCRBhQdRfnAfFbUwdnH7TDTm4vx"
-returnAddr="1FiDC6XWHLe7fDMhof8wJ3dty24f6aKKjK"
-count=3000
-
-[[consensus.sub.ticket.genesis]]
-minerAddr="1bgg6HwQretMiVcSWvayPRvVtwjyKfz1J"
-returnAddr="1AMvuuQ7V7FPQ4hkvHQdgNWy8wVL4d4hmp"
-count=3000
-
-[[consensus.sub.ticket.genesis]]
-minerAddr="1EwkKd9iU1pL2ZwmRAC5RrBoqFD1aMrQ2"
-returnAddr="1ExRRLoJXa8LzXdNxnJvBkVNZpVw3QWMi4"
-count=3000
-
-[[consensus.sub.ticket.genesis]]
-minerAddr="1HFUhgxarjC7JLru1FLEY6aJbQvCSL58CB"
-returnAddr="1KNGHukhbBnbWWnMYxu1C7YMoCj45Z3amm"
-count=3000
-
-[[consensus.sub.ticket.genesis]]
-minerAddr="1C9M1RCv2e9b4GThN9ddBgyxAphqMgh5zq"
-returnAddr="1AH9HRd4WBJ824h9PP1jYpvRZ4BSA4oN6Y"
-count=4733
+minerAddr="1LYVFbBgP6sDJAiFp9MBK6JXmz4B3qi7xT" # address.csv-5
+returnAddr="1H4raYADNfeamxmJnQDeNrkNioAmiSi5et" # address.csv-6
+count=49990
 
 [store]
 name="kvmvccmavl"
@@ -192,12 +157,12 @@ friendExecer=["evm"]
 #配置一个空值，防止配置文件被覆盖
 tokenApprs = []
 
-[exec.sub.relay]
-genesis="14KEKbYtKKQm4wMthSK9J4La4nAiidGozt"
+[exec.sub.relay] # address.csv-7
+genesis="12NKeyssrnU9JcQwCcwuKn9XaG5Scbqy82"
 
-[exec.sub.manage]
+[exec.sub.manage] # address.csv-8
 superManager=[
-    "1JmFaA6unrCFYEWPGRi7uuXY1KthTJxJEP", 
+    "1LVrq6KmQ9eNZMcqyjMgPBxxmDyhzRpUCw", 
 ]
 #自治合约执行器名字
 autonomyExec="autonomy"
@@ -209,28 +174,11 @@ paraConsensusStopBlocks=30000
 #配置平行链资产跨链交易的高度列表，title省略user.p,不同title使用,分割，不同hit高度使用"."分割，
 #不同ignore高度区间用"."分割，区间内部使用"-"分割，hit高度在ignore范围内，为平行链自身的高度，不是主链高度
 ## para.hit.10.50.250, para.ignore.1-100.200-300
-paraCrossAssetTxHeightList=[
-"fzmtest.hit.74485",
-"fzmtest.ignore.1-67335.67850-72473.73667-77630.77920-79495.79936-79939",
-"game.hit.4203.4226.17725.18195.18403.18405.18859.18951.19393.28966.61168",
-"game.ignore.1-8797.16808-20365.25637-33828.43399-44595.58333-166131",
-"testuwallet.hit.35556.35564.36505.36511.53386",
-"testuwallet.ignore.1-3121.4496-7422.33032-37596.37928-40556.44599-46879.52600-72584",
-"mall.hit.80276.80295.81260.81271",
-"mall.ignore.1-196397",
-"uwallet.hit.9954.39357",
-"uwallet.ignore.1-2896.7518-90568",
-"HonorDecentchain.ignore.1-90000000",
-"HonorDecent.ignore.1-198279",
-"bontav1.ignore.1-109068",
-"bonta.ignore.1-89729",
-"mc.ignore.1-90000000",
-"proof.ignore.1-38810"
-]
+paraCrossAssetTxHeightList=[]
 
 
-[exec.sub.autonomy]
-total="16htvcBNSEA7fZhAdLJphDwQRQJaHpyHTp"
+[exec.sub.autonomy] # address.csv-7
+total="12NKeyssrnU9JcQwCcwuKn9XaG5Scbqy82"
 useBalance=false
 
 [mver.autonomy]
@@ -299,7 +247,7 @@ itemWaitBlockNumber=40000
 addressDriver="eth"
 ethMapFromExecutor="coins"
 #title的币种名称
-ethMapFromSymbol="bty" 
+ethMapFromSymbol="HXC" 
 #当前最大为200万
 evmGasLimit=2000000
 
@@ -311,121 +259,121 @@ ForkChainParamV1= 0
 ForkCheckTxDup=0
 ForkBlockHash= 1
 ForkMinerTime= 0
-ForkTransferExec= 100000
-ForkExecKey= 200000
-ForkTxGroup= 200000
-ForkResetTx0= 200000
-ForkWithdraw= 200000
-ForkExecRollback= 450000
-ForkCheckBlockTime=2270000
+ForkTransferExec=  0
+ForkExecKey=  0
+ForkTxGroup=  0
+ForkResetTx0=  0
+ForkWithdraw=  0
+ForkExecRollback=  0
+ForkCheckBlockTime= 0
 ForkTxHeight= -1
-ForkTxGroupPara= 2270000
-ForkChainParamV2= 2270000
-ForkMultiSignAddress=2270000
-ForkStateDBSet=2270000
-ForkLocalDBAccess=2270000
-ForkBlockCheck=2270000
-ForkBase58AddressCheck=2270000
-ForkEnableParaRegExec=2270000
-ForkCacheDriver=4320000
-ForkTicketFundAddrV1=4320000
+ForkTxGroupPara=  0
+ForkChainParamV2=  0
+ForkMultiSignAddress= 0
+ForkStateDBSet= 0
+ForkLocalDBAccess= 0
+ForkBlockCheck= 0
+ForkBase58AddressCheck= 0
+ForkEnableParaRegExec= 0
+ForkCacheDriver= 0
+ForkTicketFundAddrV1= 0
 #fork for 6.4
-ForkRootHash=7200000 
+ForkRootHash= 0 
 #eth address key format fork
-ForkFormatAddressKey=21000000
-ForkCheckEthTxSort=26670000
-ForkProxyExec=29528000
-ForkMaxTxFeeV1=30839600
-ForkEthAddressFormat=32350000
+ForkFormatAddressKey= 0
+ForkCheckEthTxSort= 0
+ForkProxyExec= 0
+ForkMaxTxFeeV1= 0
+ForkEthAddressFormat= 0
 
 [fork.sub.evm]
-Enable=19900000
-ForkEVMABI=19900000
-ForkEVMYoloV1=19900000
-ForkEVMState=19900000
-ForkEVMFrozen=19900000
-ForkEVMTxGroup=19900000
-ForkEVMKVHash=19900000
-ForkEVMMixAddress=25200000
-ForkIntrinsicGas=25200000
-ForkEVMAddressInit=25770000
-ForkEvmExecNonce=26670000
-ForkEvmExecNonceV2=29528000
+Enable= 0
+ForkEVMABI= 0
+ForkEVMYoloV1= 0
+ForkEVMState= 0
+ForkEVMFrozen= 0
+ForkEVMTxGroup= 0
+ForkEVMKVHash= 0
+ForkEVMMixAddress= 0
+ForkIntrinsicGas= 0
+ForkEVMAddressInit= 0
+ForkEvmExecNonce= 0
+ForkEvmExecNonceV2= 0
 [fork.sub.rollup]
-Enable=25770000
+Enable= 0
 
 
 [fork.sub.none]
-ForkUseTimeDelay=23000000
+ForkUseTimeDelay= 0
 
 [fork.sub.coins]
 Enable=0
-ForkFriendExecer=23000000
+ForkFriendExecer= 0
 
 [fork.sub.ticket]
 Enable=0
-ForkTicketId = 1600000
-ForkTicketVrf = 2270000
+ForkTicketId =  0
+ForkTicketVrf =  0
 
 [fork.sub.retrieve]
 Enable=0
 ForkRetrive=0
-ForkRetriveAsset=4320000
+ForkRetriveAsset= 0
 
 [fork.sub.hashlock]
 Enable=0
-ForkBadRepeatSecret=4320000
+ForkBadRepeatSecret= 0
 
 [fork.sub.manage]
 Enable=0
-ForkManageExec=100000
-ForkManageAutonomyEnable=19030000
+ForkManageExec= 0
+ForkManageAutonomyEnable= 0
 
 [fork.sub.token]
 Enable=0
 ForkTokenBlackList= 0
 ForkBadTokenSymbol= 0
-ForkTokenPrice= 300000
-ForkTokenSymbolWithNumber=1600000
-ForkTokenCheck= 2270000
+ForkTokenPrice= 0
+ForkTokenSymbolWithNumber= 0
+ForkTokenCheck= 0
 ForkTokenEvm=-1
 [fork.sub.trade]
 Enable=0
 ForkTradeBuyLimit= 0
-ForkTradeAsset= 2270000
-ForkTradeID = 2270000
-ForkTradeFixAssetDB=4320000
-ForkTradePrice=4320000
+ForkTradeAsset= 0
+ForkTradeID = 0
+ForkTradeFixAssetDB= 0
+ForkTradePrice= 0
 
 [fork.sub.paracross]
-Enable=1600000
-ForkParacrossWithdrawFromParachain=1600000
-ForkParacrossCommitTx=2270000
-ForkLoopCheckCommitTxDone=4320000
+Enable= 0
+ForkParacrossWithdrawFromParachain= 0
+ForkParacrossCommitTx= 0
+ForkLoopCheckCommitTxDone= 0
 #fork for 6.4
-ForkParaAssetTransferRbk=7200000    
-ForkParaSelfConsStages=7200000
-ForkParaSupervision=18000000
-ForkParaAutonomySuperGroup=19030000
+ForkParaAssetTransferRbk= 0    
+ForkParaSelfConsStages= 0
+ForkParaSupervision= 0
+ForkParaAutonomySuperGroup= 0
 #仅平行链适用
 ForkParaFullMinerHeight=-1
 ForkParaRootHash=-1
-ForkParaFreeRegister=21000000
-ForkParaCheckTx=25200000
+ForkParaFreeRegister= 0
+ForkParaCheckTx= 0
 
 [fork.sub.multisig]
-Enable=1600000
+Enable= 0
 
 [fork.sub.autonomy]
-Enable=7200000
-ForkAutonomyDelRule=16000000
-ForkAutonomyEnableItem=19030000
+Enable= 0
+ForkAutonomyDelRule= 0
+ForkAutonomyEnableItem= 0
 
 [fork.sub.unfreeze]
-Enable=1600000
-ForkTerminatePart=1600000
-ForkUnfreezeIDX= 2270000
+Enable= 0
+ForkTerminatePart= 0
+ForkUnfreezeIDX=  0
 
 [fork.sub.store-kvmvccmavl]
-ForkKvmvccmavl=2270000
+ForkKvmvccmavl= 0
 `, version.Version)
