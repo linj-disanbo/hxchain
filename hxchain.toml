@@ -1,4 +1,4 @@
-Title="bityuan"
+Title="hxchain"
 FixTime=false
 
 [log]
@@ -51,7 +51,7 @@ port=13802
 seeds=[]
 isSeed=false
 innerSeedEnable=true
-useGithub=true
+useGithub=false
 innerBounds=300
 
 [p2p.sub.dht]
