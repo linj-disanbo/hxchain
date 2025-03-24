@@ -37,8 +37,6 @@ dmitri.shuralyov.com/html/belt v0.0.0-20180602232347-f7d459c86be0/go.mod h1:JLBr
 dmitri.shuralyov.com/service/change v0.0.0-20181023043359-a85b471d5412/go.mod h1:a1inKt/atXimZ4Mv927x+r7UpyzRUf4emIoiiSC2TN4=
 dmitri.shuralyov.com/state v0.0.0-20180228185332-28bcc343414c/go.mod h1:0PRwlb0D6DFvNNtx+9ybjezNCa8XF0xaYcETyp6rHWU=
 git.apache.org/thrift.git v0.0.0-20180902110319-2566ecd5d999/go.mod h1:fPE2ZNJGynbRyZ4dJvy6G277gSllfV2HJqblrnkyeyg=
-github.com/33cn/chain33 v1.68.2 h1:dfRVhMzaZfq9gSuoAAa4wGOP5MLOkZrJcitLfrL9QAc=
-github.com/33cn/chain33 v1.68.2/go.mod h1:9nwINei+dK/pztPobQSwJpeawYbR2o6UR01QM+AwBC8=
 github.com/33cn/plugin v1.68.5-0.20240412061907-cffbf2e789ba h1:T1sSjuvCYCvRetRdRHSs4Jrb9hY3+SPrJHFE6t5Mssk=
 github.com/33cn/plugin v1.68.5-0.20240412061907-cffbf2e789ba/go.mod h1:ICc/igjZ3QOOXt8Crvh3+goYCVre73QPwigf53616h8=
 github.com/AndreasBriese/bbloom v0.0.0-20190825152654-46b345b51c96 h1:cTp8I5+VIoKjsnZuH8vjyaysT/ses3EvZeaV/1UkF2M=
@@ -822,6 +820,8 @@ github.com/libp2p/zeroconf/v2 v2.2.0 h1:Cup06Jv6u81HLhIj1KasuNM/RHHrJ8T7wOTS4+Tv
 github.com/libp2p/zeroconf/v2 v2.2.0/go.mod h1:fuJqLnUwZTshS3U/bMRJ3+ow/v9oid1n0DmyYyNO1Xs=
 github.com/lightstep/lightstep-tracer-common/golang/gogo v0.0.0-20190605223551-bc2310a04743/go.mod h1:qklhhLq1aX+mtWk9cPHPzaBjWImj5ULL6C7HFJtXQMM=
 github.com/lightstep/lightstep-tracer-go v0.18.1/go.mod h1:jlF1pusYV4pidLvZ+XD0UBX0ZE6WURAspgAczcDHrL4=
+github.com/linj-disanbo/chain33 v0.0.0-20250324033405-6a73a55e5ceb h1:VRCETSJsutGFJrNO7II6A4Y6jkeM6wzGQePcO90WEyY=
+github.com/linj-disanbo/chain33 v0.0.0-20250324033405-6a73a55e5ceb/go.mod h1:9nwINei+dK/pztPobQSwJpeawYbR2o6UR01QM+AwBC8=
 github.com/lunixbochs/vtclean v1.0.0/go.mod h1:pHhQNgMf3btfWnGBVipUOjRYhoOsdGqdm/+2c2E2WMI=
 github.com/lyft/protoc-gen-validate v0.0.13/go.mod h1:XbGvPuh87YZc5TdIa2/I4pLk0QoUACkjt2znoq26NVQ=
 github.com/magiconair/properties v1.8.0/go.mod h1:PppfXfuXeibc/6YijjN8zIbojt8czPbwD3XqdrwzmxQ=

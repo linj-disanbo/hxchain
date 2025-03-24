@@ -69,6 +69,7 @@ disableLtBlock=true
 name="price"
 poolCacheSize=102400
 minTxFeeRate=10 
+maxTxFeeRate=1000
 maxTxFee=1000000 
 isLevelFee=true
 
