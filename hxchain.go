@@ -106,7 +106,7 @@ maxTxNumber = 1500
 [mver.consensus.ticket]
 coinReward = 667
 coinDevFund = 333
-ticketPrice = 1000000
+ticketPrice = 500000
 retargetAdjustmentFactor = 4
 futureBlockTime = 5
 ticketFrozenTime = 43200
@@ -120,7 +120,7 @@ coinReward = 667
 coinDevFund = 333
 targetTimespan = 720
 targetTimePerBlock = 5
-ticketPrice = 1000000
+ticketPrice = 500000
 
 [mver.consensus.ForkTicketFundAddrV1]
 fundKeyAddr = "14BtJXCtfUPtnRzgPq8YVmF1EHrhZyajzT" # TODO
@@ -131,12 +131,12 @@ genesisBlockTime=1526486816
 [[consensus.sub.ticket.genesis]] # 可以重复更多个, 进行初始分配
 minerAddr="13ZKGRKU1UmFuU1YyLDDiFjr5A14vHnbjr" # address.csv-3
 returnAddr="18g5j6VbSgHrAMf5C5bhz4PE87pPJaK9e9" # address.csv-4
-count=50000
+count=100000
 
 [[consensus.sub.ticket.genesis]]
 minerAddr="1LYVFbBgP6sDJAiFp9MBK6JXmz4B3qi7xT" # address.csv-5
 returnAddr="1H4raYADNfeamxmJnQDeNrkNioAmiSi5et" # address.csv-6
-count=49990
+count=100000
 
 [store]
 name="kvmvccmavl"
