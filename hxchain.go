@@ -91,7 +91,7 @@ poolCacheSize=102400
 [consensus]
 name="ticket"
 minerstart=true
-genesisBlockTime=1514533394
+genesisBlockTime=1743400000
 genesis="1J4BakhLh1PdY3ojnmUP9HdciAPam2s7Bk" # address.csv-1
 minerExecs=["ticket", "autonomy"]
 enableBestBlockCmp=true
@@ -126,11 +126,11 @@ ticketPrice = 500000
 fundKeyAddr = "14BtJXCtfUPtnRzgPq8YVmF1EHrhZyajzT" # TODO
 
 [consensus.sub.ticket]
-genesisBlockTime=1526486816
+genesisBlockTime=1743400000
 
 [[consensus.sub.ticket.genesis]] # 可以重复更多个, 进行初始分配
-minerAddr="13ZKGRKU1UmFuU1YyLDDiFjr5A14vHnbjr" # address.csv-3
-returnAddr="18g5j6VbSgHrAMf5C5bhz4PE87pPJaK9e9" # address.csv-4
+minerAddr="0x3c97c3ddfb316bd4a52b986ce64d73db0a5fe45e" # address.csv-3 / mng8
+returnAddr="0xfc034adb2b6c570bc21585cfe7241b43a522c574" # address.csv-4 / mng9
 count=100000
 
 [[consensus.sub.ticket.genesis]]
@@ -144,7 +144,7 @@ driver="leveldb"
 storedbVersion="2.0.0"
 
 [wallet]
-minFee=100000
+minFee=10
 driver="leveldb"
 signType="secp256k1"
 
