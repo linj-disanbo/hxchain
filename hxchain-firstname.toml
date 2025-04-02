@@ -33,7 +33,7 @@ enableReExecLocal=false
 # 使能精简localdb
 enableReduceLocaldb=false
 # 是否禁止分片功能，默认开启分片功能
-disableShard=false
+disableShard=true
 # 使能从P2pStore中获取数据
 enableFetchP2pstore=true
 singleMode=true
@@ -60,9 +60,9 @@ seeds=[]
 port=13803
 maxConnectNum=300
 # 是否配置为全节点模式，全节点保存所有分片数据，种子节点应配置为true
-isFullNode=false
+isFullNode=true
 #允许连接的最低版本
-verLimit="6.8.9"
+verLimit="1.0.0"
 
 [p2p.sub.dht.pubsub]
 gossipSubDlo=7
