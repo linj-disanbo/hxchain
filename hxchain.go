@@ -12,7 +12,7 @@ TestNet=false
 version="%s"
 CoinSymbol="HXC"
 ChainID=12222
-CoinPrecision = 10000
+CoinPrecision = 1000000
 
 [crypto]
 enableTypes=[]    #设置启用的加密插件名称，不配置启用所有
@@ -21,7 +21,7 @@ bls=-1
 btcscript=0
 [crypto.sub.secp256k1eth] 
 evmChainID=12222
-coinsPrecision=1e4
+coinsPrecision=1e6
 
 [address]
 defaultDriver="btc"
