@@ -21,6 +21,7 @@ bls=-1
 btcscript=0
 [crypto.sub.secp256k1eth] 
 evmChainID=12222
+coinsPrecision=1e4
 
 [address]
 defaultDriver="btc"
