@@ -69,14 +69,14 @@ disableLtBlock=true
 [mempool]
 name="price"
 poolCacheSize=102400
-minTxFeeRate=10 
-maxTxFeeRate=1000
-maxTxFee=1000000 
+minTxFeeRate=22000 
+maxTxFeeRate=100000
+maxTxFee=100000000 
 isLevelFee=true
 
 [mver.mempool.ForkMaxTxFeeV1]
 # 单笔交易最大的手续费,  50 coins
-maxTxFee=5000000 
+maxTxFee=100000000 
 
 [mempool.sub.score]
 poolCacheSize=102400
@@ -145,19 +145,21 @@ driver="leveldb"
 storedbVersion="2.0.0"
 
 [wallet]
-minFee=10
+minFee=22000
 driver="leveldb"
 signType="secp256k1"
 
 [exec]
 proxyExecAddress="0x0000000000000000000000000000000000200005"
+
 [exec.sub.coins]
 #允许evm执行器操作coins
 friendExecer=["evm"]
 
 [exec.sub.token]
 #配置一个空值，防止配置文件被覆盖
-tokenApprs = []
+tokenApprs = ["0x3C97C3DdFB316BD4a52b986Ce64D73Db0A5fe45e", "1LYVFbBgP6sDJAiFp9MBK6JXmz4B3qi7xT"] #mng8, address.csv-5
+friendExecer=["evm"]
 
 [exec.sub.relay] # address.csv-7
 genesis="12NKeyssrnU9JcQwCcwuKn9XaG5Scbqy82"
@@ -252,6 +254,10 @@ ethMapFromExecutor="coins"
 ethMapFromSymbol="HXC" 
 #当前最大为200万
 evmGasLimit=2000000
+[exec.sub.evm.preCompile]
+# 激活合token-erc20 的合约管理地址，必须配置管理员地址
+superManager=["0x3C97C3DdFB316BD4a52b986Ce64D73Db0A5fe45e"]
+
 
 
 #系统中所有的fork,默认用chain33的测试网络的
@@ -338,7 +344,8 @@ ForkBadTokenSymbol= 0
 ForkTokenPrice= 0
 ForkTokenSymbolWithNumber= 0
 ForkTokenCheck= 0
-ForkTokenEvm=-1
+ForkTokenEvm=0
+
 [fork.sub.trade]
 Enable=0
 ForkTradeBuyLimit= 0
