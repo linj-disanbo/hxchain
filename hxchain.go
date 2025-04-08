@@ -55,7 +55,7 @@ serverStart=true
 #bootstraps=["/ip4/13.115.235.168/tcp/13803/p2p/16Uiu2HAkzNiDx1mN6muuBRgPpDRaUG5NGs8HMHmp1HND968Y6Kho",
 #"/ip4/174.139.188.98/tcp/13803/p2p/16Uiu2HAm7nyy2yYhHW5VkhbXpTo8vqoZNsgzEH8hMNn98UWWfaK6",
 #"/ip4/23.224.75.178/tcp/13803/p2p/16Uiu2HAmQ9E5dQR1kyQPj1JARsHjNFFVEYZAeQWePM9nysdjPPNC"]
-bootstraps=["/ip4/52.220.189.104/tcp/13803/p2p/16Uiu2HAmVi5PXm8hX58nhBbwLrMp1vPLf3JZ53fgHL8JDePN1pbt"] # TODO
+bootstraps=["/ip4/52.220.189.104/tcp/13803/p2p/16Uiu2HAkyrfrDue6dnxRMMSKqXwpdBQtfoY2BaPoh5XTeE9Nerrj"] # TODO
 
 [p2p.sub.dht.broadcast]
 # 区块哈希广播最小大小 100KB
@@ -329,7 +329,7 @@ ForkBadRepeatSecret= 0
 [fork.sub.manage]
 Enable=0
 ForkManageExec= 0
-ForkManageAutonomyEnable= 0
+ForkManageAutonomyEnable= -1
 
 [fork.sub.token]
 Enable=0
