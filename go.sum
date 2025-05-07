@@ -820,8 +820,8 @@ github.com/libp2p/zeroconf/v2 v2.2.0 h1:Cup06Jv6u81HLhIj1KasuNM/RHHrJ8T7wOTS4+Tv
 github.com/libp2p/zeroconf/v2 v2.2.0/go.mod h1:fuJqLnUwZTshS3U/bMRJ3+ow/v9oid1n0DmyYyNO1Xs=
 github.com/lightstep/lightstep-tracer-common/golang/gogo v0.0.0-20190605223551-bc2310a04743/go.mod h1:qklhhLq1aX+mtWk9cPHPzaBjWImj5ULL6C7HFJtXQMM=
 github.com/lightstep/lightstep-tracer-go v0.18.1/go.mod h1:jlF1pusYV4pidLvZ+XD0UBX0ZE6WURAspgAczcDHrL4=
-github.com/linj-disanbo/chain33 v0.0.0-20250403104844-f6895733dc38 h1:SqvBSeluY//dJOKy1OL+VOZT5FgD+GYHMUjz6ka+8hs=
-github.com/linj-disanbo/chain33 v0.0.0-20250403104844-f6895733dc38/go.mod h1:9nwINei+dK/pztPobQSwJpeawYbR2o6UR01QM+AwBC8=
+github.com/linj-disanbo/chain33 v0.0.0-20250410044857-5da76235c8ef h1:VmLb1fBiMD2KE5F9QHI+2iySODb+FdBXr8bLqfNRMdY=
+github.com/linj-disanbo/chain33 v0.0.0-20250410044857-5da76235c8ef/go.mod h1:9nwINei+dK/pztPobQSwJpeawYbR2o6UR01QM+AwBC8=
 github.com/lunixbochs/vtclean v1.0.0/go.mod h1:pHhQNgMf3btfWnGBVipUOjRYhoOsdGqdm/+2c2E2WMI=
 github.com/lyft/protoc-gen-validate v0.0.13/go.mod h1:XbGvPuh87YZc5TdIa2/I4pLk0QoUACkjt2znoq26NVQ=
 github.com/magiconair/properties v1.8.0/go.mod h1:PppfXfuXeibc/6YijjN8zIbojt8czPbwD3XqdrwzmxQ=

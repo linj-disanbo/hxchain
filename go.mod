@@ -195,4 +195,4 @@ require (
 	nhooyr.io/websocket v1.8.7 // indirect
 )
 
-replace github.com/33cn/chain33 => github.com/linj-disanbo/chain33 v0.0.0-20250403104844-f6895733dc38
+replace github.com/33cn/chain33 => github.com/linj-disanbo/chain33 v0.0.0-20250410044857-5da76235c8ef
