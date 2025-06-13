@@ -103,10 +103,10 @@ powLimitBits = "0x1f00ffff"
 maxTxNumber = 1500
 
 # TODO
-# 1000e = 10w * 100w
+# 1000e = 50w * 20w
 [mver.consensus.ticket]
-coinReward = 667
-coinDevFund = 333
+coinReward = 800
+coinDevFund = 400
 ticketPrice = 500000
 retargetAdjustmentFactor = 4
 futureBlockTime = 5
@@ -114,11 +114,11 @@ ticketFrozenTime = 43200
 ticketWithdrawTime = 172800
 ticketMinerWaitTime = 7200
 targetTimespan = 2160
-targetTimePerBlock = 15
+targetTimePerBlock = 5
 
 [mver.consensus.ticket.ForkChainParamV2]
-coinReward = 667
-coinDevFund = 333
+coinReward = 800
+coinDevFund = 400
 targetTimespan = 720
 targetTimePerBlock = 5
 ticketPrice = 500000
