@@ -52,10 +52,7 @@ serverStart=true
 
 [p2p.sub.dht]
 #bootstraps是内置不能修改的引导节点
-#bootstraps=["/ip4/13.115.235.168/tcp/13803/p2p/16Uiu2HAkzNiDx1mN6muuBRgPpDRaUG5NGs8HMHmp1HND968Y6Kho",
-#"/ip4/174.139.188.98/tcp/13803/p2p/16Uiu2HAm7nyy2yYhHW5VkhbXpTo8vqoZNsgzEH8hMNn98UWWfaK6",
-#"/ip4/23.224.75.178/tcp/13803/p2p/16Uiu2HAmQ9E5dQR1kyQPj1JARsHjNFFVEYZAeQWePM9nysdjPPNC"]
-bootstraps=["/ip4/52.220.189.104/tcp/13803/p2p/16Uiu2HAkyrfrDue6dnxRMMSKqXwpdBQtfoY2BaPoh5XTeE9Nerrj"] # TODO
+bootstraps=["/ip4/13.112.163.67/tcp/13803/p2p/16Uiu2HAkvv4T6FCEyg6KUktssybhaEik8eF3CCSvrNckmLkqNxYq","/ip4/54.238.150.153/tcp/13803/p2p/16Uiu2HAmC3n4UiyhFZSQdMAoKz4CgkVhHSQpQ2ryJ8sWRVwZwtAU"]
 
 [p2p.sub.dht.broadcast]
 # 区块哈希广播最小大小 100KB
@@ -92,22 +89,22 @@ poolCacheSize=102400
 [consensus]
 name="ticket"
 minerstart=true
-genesisBlockTime=1743400000
-genesis="1J4BakhLh1PdY3ojnmUP9HdciAPam2s7Bk" # address.csv-1
+genesisBlockTime=1754841600
+genesis="0x363bEdc4a24E707308f898d5e6256bE177e9576a" # address.csv-1
 minerExecs=["ticket", "autonomy"]
 enableBestBlockCmp=true
 
 [mver.consensus]
-fundKeyAddr = "14BtJXCtfUPtnRzgPq8YVmF1EHrhZyajzT" # TODO
+fundKeyAddr = "1Ji3W12KGScCM7C2p8bg635sNkayDM8MGY" # TODO
 powLimitBits = "0x1f00ffff"
 maxTxNumber = 1500
 
 # TODO
 # 1000e = 50w * 20w
 [mver.consensus.ticket]
-coinReward = 800
-coinDevFund = 400
-ticketPrice = 500000
+coinReward = 80
+coinDevFund = 40
+ticketPrice = 20000
 retargetAdjustmentFactor = 4
 futureBlockTime = 5
 ticketFrozenTime = 43200
@@ -117,27 +114,27 @@ targetTimespan = 2160
 targetTimePerBlock = 5
 
 [mver.consensus.ticket.ForkChainParamV2]
-coinReward = 800
-coinDevFund = 400
+coinReward = 80
+coinDevFund = 40
 targetTimespan = 720
 targetTimePerBlock = 5
-ticketPrice = 500000
+ticketPrice = 20000
 
 [mver.consensus.ForkTicketFundAddrV1]
-fundKeyAddr = "14BtJXCtfUPtnRzgPq8YVmF1EHrhZyajzT" # TODO
+fundKeyAddr = "1Ji3W12KGScCM7C2p8bg635sNkayDM8MGY" # TODO
 
 [consensus.sub.ticket]
-genesisBlockTime=1743400000
+genesisBlockTime=1754841600
 
 [[consensus.sub.ticket.genesis]] # 可以重复更多个, 进行初始分配
-minerAddr="0x3c97c3ddfb316bd4a52b986ce64d73db0a5fe45e" # address.csv-3 / mng8
-returnAddr="0xfc034adb2b6c570bc21585cfe7241b43a522c574" # address.csv-4 / mng9
-count=100000
+minerAddr="0xDcD462a9c5626Dc06D2c1F16a00E42723d44A3fA" # address.csv-3 / mng8
+returnAddr="0x363bEdc4a24E707308f898d5e6256bE177e9576a" # address.csv-4 / mng9
+count=249999
 
 [[consensus.sub.ticket.genesis]]
-minerAddr="1LYVFbBgP6sDJAiFp9MBK6JXmz4B3qi7xT" # address.csv-5
-returnAddr="1H4raYADNfeamxmJnQDeNrkNioAmiSi5et" # address.csv-6
-count=100000
+minerAddr="0xb5965288F15695fe2DA2f30e62de95ef4b6F7f0f" # address.csv-5
+returnAddr="0xf6eC20809D7faB1AF1113499F589958e5d0aF45f" # address.csv-7
+count=249999
 
 [store]
 name="kvmvccmavl"
@@ -158,15 +155,15 @@ friendExecer=["evm"]
 
 [exec.sub.token]
 #配置一个空值，防止配置文件被覆盖
-tokenApprs = ["0x3C97C3DdFB316BD4a52b986Ce64D73Db0A5fe45e", "1LYVFbBgP6sDJAiFp9MBK6JXmz4B3qi7xT"] #mng8, address.csv-5
+tokenApprs = ["0xf6eC20809D7faB1AF1113499F589958e5d0aF45f", "1EKnyx7akKc8MHnwiJh7pPgxfUTXAvdQhF"] #mng8, address.csv-5
 friendExecer=["evm"]
 
 [exec.sub.relay] # address.csv-7
-genesis="12NKeyssrnU9JcQwCcwuKn9XaG5Scbqy82"
+genesis="1EKnyx7akKc8MHnwiJh7pPgxfUTXAvdQhF"
 
 [exec.sub.manage] # address.csv-8
 superManager=[
-    "1LVrq6KmQ9eNZMcqyjMgPBxxmDyhzRpUCw", 
+    "1EKnyx7akKc8MHnwiJh7pPgxfUTXAvdQhF", 
 ]
 #自治合约执行器名字
 autonomyExec="autonomy"
@@ -182,33 +179,33 @@ paraCrossAssetTxHeightList=[]
 
 
 [exec.sub.autonomy] # address.csv-7
-total="12NKeyssrnU9JcQwCcwuKn9XaG5Scbqy82"
+total="16htvcBNSEA7fZhAdLJphDwQRQJaHpyHTp"
 useBalance=false
 
 [mver.autonomy]
 #最小委员会数量
-minBoards=20
+minBoards=7
 #最大委员会数量
-maxBoards=40
+maxBoards=100
 #公示一周时间，以区块高度计算
-publicPeriod=120960
+publicPeriod=360 # 120960 # 测试 半小时
 #单张票价
-ticketPrice=3000
+ticketPrice=20000
 #重大项目公示金额阈值
-largeProjectAmount=1000000
-#创建者消耗金额bty
-proposalAmount=500
+largeProjectAmount=50000000
+#创建者消耗金额HXC
+proposalAmount=5000
 #董事会成员赞成率，百分比，可修改
 boardApproveRatio=51
 #全体持票人参与率，百分比
-pubAttendRatio=75
+pubAttendRatio=50
 #全体持票人赞成率，百分比
-pubApproveRatio=66
+pubApproveRatio=50
 #全体持票人否决率，百分比
 pubOpposeRatio=33
 #提案开始结束最小周期高度
 startEndBlockPeriod=720
-#提案高度 结束高度最大周期 100W
+#提案高度 结束高度最大周期
 propEndBlockPeriod=1000000
 #最小董事会赞成率
 minBoardApproveRatio=50
@@ -223,25 +220,25 @@ maxPubOpposeRatio=50
 #最小全体持票人参与率
 minPubAttendRatio=50
 #最大全体持票人参与率
-maxPubAttendRatio=80
+maxPubAttendRatio=60
 #最小全体持票人赞成率
 minPubApproveRatio=50
 #最大全体持票人赞成率
-maxPubApproveRatio=80
+maxPubApproveRatio=60
 #最小公示周期
 minPublicPeriod=120960
 #最大公示周期
 maxPublicPeriod=241920
 #最小重大项目阈值(coin)
-minLargeProjectAmount=1000000
+minLargeProjectAmount=5000000
 #最大重大项目阈值(coin)
-maxLargeProjectAmount=3000000
+maxLargeProjectAmount=50000000
 #最小提案金(coin)
-minProposalAmount=20
+minProposalAmount=2000
 #最大提案金(coin)
-maxProposalAmount=2000	
-#每个时期董事会审批最大额度300万
-maxBoardPeriodAmount =3000000
+maxProposalAmount=100000  
+#每个时期董事会审批最大额度5000万
+maxBoardPeriodAmount =50000000
 #时期为一个月
 boardPeriod=518400
 #4w高度，大概2天 (未生效)
@@ -256,7 +253,7 @@ ethMapFromSymbol="HXC"
 evmGasLimit=2000000
 [exec.sub.evm.preCompile]
 # 激活合token-erc20 的合约管理地址，必须配置管理员地址
-superManager=["0x3C97C3DdFB316BD4a52b986Ce64D73Db0A5fe45e"]
+superManager=["0xf6eC20809D7faB1AF1113499F589958e5d0aF45f"]
 
 
 
@@ -284,7 +281,7 @@ ForkBlockCheck= 0
 ForkBase58AddressCheck= 0
 ForkEnableParaRegExec= 0
 ForkCacheDriver= 0
-ForkTicketFundAddrV1= -1
+ForkTicketFundAddrV1= 0
 #fork for 6.4
 ForkRootHash= 0 
 #eth address key format fork
@@ -335,7 +332,7 @@ ForkBadRepeatSecret= 0
 [fork.sub.manage]
 Enable=0
 ForkManageExec= 0
-ForkManageAutonomyEnable= -1
+ForkManageAutonomyEnable= 0
 
 [fork.sub.token]
 Enable=0
